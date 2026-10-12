@@ -27,3 +27,10 @@ The trade-off: we do not validate scheme names against an IANA registry, and we 
 ## Edge you will hit
 
 Parameter keys are stored with their original casing, but auth-param names are tokens and `realm` is matched case-insensitively by convention. Use the `param()` method rather than `params.get()` directly if you want case-insensitive lookup. Duplicate keys within a single challenge keep the last value (last-wins), matching typical HTTP header merge semantics; we do not error.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
