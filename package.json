@@ -1,6 +1,6 @@
 {
   "name": "www-authenticate-parse",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Parses WWW-Authenticate values into scheme, realm, and challenge parameter maps handling multiple challenges.",
   "type": "module",
   "main": "src/index.js",
